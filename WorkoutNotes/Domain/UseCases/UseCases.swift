@@ -9,62 +9,43 @@ import Foundation
 
 /// workouts
 protocol CreateWorkoutUseCase {
-    func execute(title: String, date: Date) throws
+    func execute(title: String, date: Date) throws -> Workout
 }
 
 protocol DeleteWorkoutUseCase {
-    func execute(id: UUID) throws
+    func execute(workout: Workout) throws
 }
 
 protocol EditWorkoutUseCase {
-    
+    func execute(workout: Workout) throws
 }
 
 protocol CopyWorkoutUseCase {
-    
+    func execute(workout: Workout) throws -> Workout
 }
 
 /// exercises
 protocol AddExerciseToWorkoutUseCase {
-    func execute(workoutId: UUID, exercise: Exercise) throws
+    func execute(workout: Workout, exercise: Exercise) throws -> Exercise
 }
 
 protocol DeleteExerciseFromWorkoutUseCase {
-    func execute(workoutId: UUID, exerciseId: UUID) throws
+    func execute(workout: Workout, exercise: Exercise) throws
 }
 
 protocol EditExerciseInWorkoutUseCase {
-    func execute(workoutId: UUID, updatedExercise: Exercise) throws
+    func execute(workout: Workout, updatedExercise: Exercise) throws
 }
 
-/// statistics
-protocol GetWorkoutHistoryUseCase {
-    func execute() throws -> [Workout]
+/// start workout
+protocol StartWorkoutUseCase {
+    func execute(workout: Workout)
 }
 
-protocol GetMuscleGroupStatsUseCase {
-    
+protocol StopWorkoutUseCase {
+    func execute(workout: Workout)
 }
 
-/// timer
-protocol StartWorkoutTimerUseCase {
-    func execute(workoutId: UUID)
-}
-
-protocol StopWorkoutTimerUseCase {
-    func execute(workoutId: UUID)
-}
-
-/// theme
-protocol ChangeAppThemeUseCase {
-    func execute(isDarkMode: Bool)
-}
-
-/// notifications
-protocol ScheduleWorkoutReminderUseCase {
-    func execute(workoutId: UUID, time: Date) throws
-}
-
-protocol DeleteWorkoutReminderUseCase {
-    func execute(notificationId: UUID) throws
+protocol FetchMuscleGroupsUseCase {
+    func execute() throws -> [MuscleGroup]
 }

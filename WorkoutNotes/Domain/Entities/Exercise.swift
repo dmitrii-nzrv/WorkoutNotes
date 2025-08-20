@@ -12,5 +12,5 @@ struct Exercise: Identifiable, Equatable {
     let id: UUID
     var name: String
     var description: String
-    var muscleGroup: MuscleGroup
+    var muscleGroup: MuscleGroup?
 }
